@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Stories - El portfolio que muestra cómo creces</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="app">
+        <!-- SCREEN 1: LANDING & AUTH SIMULATION -->
+        <section id="auth-screen" class="screen active">
+            <div class="glow-bg"></div>
+            <div class="landing-container">
+                <header class="landing-header animate-fade-in">
+                    <div class="logo">
+                        <i class="fa-solid fa-seedling logo-icon"></i>
+                        <span>Job<span>Stories</span></span>
+                    </div>
+                    <span class="badge-mvp">MVP DEMO</span>
+                </header>
+
+                <main class="landing-main">
+                    <div class="hero-text animate-slide-up">
+                        <h1>El portfolio que muestra cómo creces, <span>no solo qué has construido.</span></h1>
+                        <p>Documenta tus aprendizajes, toma de decisiones y errores superados. Genera una línea de tiempo inmutable y creíble para reclutadores que valoran tu capacidad de adaptación.</p>
+                        
+                        <div class="sso-buttons">
+                            <button id="btn-sso-github" class="btn btn-github">
+                                <i class="fa-brands fa-github"></i> Conectar con GitHub
+                            </button>
+                            <button id="btn-sso-google" class="btn btn-google">
+                                <i class="fa-brands fa-google"></i> Conectar con Google
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual animate-fade-in-delayed">
+                        <div class="interactive-preview-card">
+                            <div class="card-header">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                                <span class="card-title">timeline_preview.js</span>
+                            </div>
+                            <div class="card-body-sim">
+                                <div class="sim-entry">
+                                    <div class="sim-entry-line"></div>
+                                    <div class="sim-entry-dot"></div>
+                                    <div class="sim-entry-content">
+                                        <span class="sim-date">Hace 2 días</span>
+                                        <h4>Refactorización de Pipeline CI/CD</h4>
+                                        <p><strong>Intenté:</strong> Crear una matriz de ejecución paralela con 10 jobs.</p>
+                                        <p class="sim-error"><i class="fa-solid fa-triangle-exclamation"></i> <strong>Falló:</strong> Se agotaron los minutos de cuota gratuita y bloqueó el repo principal.</p>
+                                        <p class="sim-learn"><i class="fa-solid fa-graduation-cap"></i> <strong>Aprendí:</strong> Implementar cache local y limitar la concurrencia a 3 runners simultáneos.</p>
+                                        <div class="sim-tags">
+                                            <span class="sim-tag">GitHub Actions</span>
+                                            <span class="sim-tag">Docker</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+                <section class="value-props">
+                    <div class="prop-card">
+                        <div class="prop-icon purple"><i class="fa-solid fa-brain"></i></div>
+                        <h3>Foco en el Proceso</h3>
+                        <p>El trabajo real detrás del código es invisible. Job Stories saca a la luz tu toma de decisiones.</p>
+                    </div>
+                    <div class="prop-card">
+                        <div class="prop-icon green"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Trazabilidad Creíble</h3>
+                        <p>Timestamps inmutables y logs de auditoría visibles. Genera confianza instantánea en los reclutadores.</p>
+                    </div>
+                    <div class="prop-card">
+                        <div class="prop-icon blue"><i class="fa-solid fa-bolt"></i></div>
+                        <h3>Fricción Cero</h3>
+                        <p>Flujo optimizado para registrar un aprendizaje en menos de 2 minutos. Integrado con tus herramientas.</p>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- SCREEN 2: MAIN DASHBOARD (USER EDITOR & TIMELINE VIEW) -->
+        <section id="dashboard-screen" class="screen">
+            <header class="app-navbar">
+                <div class="logo">
+                    <i class="fa-solid fa-seedling logo-icon"></i>
+                    <span>Job<span>Stories</span></span>
+                </div>
+                <div class="nav-controls">
+                    <nav class="view-toggles">
+                        <button id="toggle-editor" class="tab-btn active"><i class="fa-solid fa-pen-to-square"></i> Mi Panel (Editor)</button>
+                        <button id="toggle-recruiter" class="tab-btn"><i class="fa-solid fa-eye"></i> Vista Reclutador (Pública)</button>
+                    </nav>
+                    <div class="user-profile-menu">
+                        <img id="user-avatar" src="" alt="Avatar">
+                        <div class="user-info">
+                            <span id="user-display-name">Developer Tech</span>
+                            <span id="user-handle">@dev</span>
+                        </div>
+                        <button id="btn-logout" title="Cerrar Sesión"><i class="fa-solid fa-right-from-bracket"></i></button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-layout">
+                <!-- Side Panel: Entry Form & Quick Stats -->
+                <aside class="sidebar-panel">
+                    <div class="card panel-card">
+                        <div class="card-header-icon">
+                            <i class="fa-solid fa-square-plus"></i>
+                            <h3>Registrar Aprendizaje</h3>
+                        </div>
+                        <form id="story-form" class="story-form-element">
+                            <div class="form-group">
+                                <label for="story-title">Título de la Entrada</label>
+                                <input type="text" id="story-title" placeholder="Ej. Bug de concurrencia en WebSocket" required autocomplete="off">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="story-tried">¿Qué intenté hacer?</label>
+                                <textarea id="story-tried" rows="3" placeholder="Contexto y lo que buscabas solucionar..." required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="story-failed">¿Qué salió mal o falló?</label>
+                                <textarea id="story-failed" rows="3" placeholder="El obstáculo, error, bug o decisión fallida..." required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="story-learned">¿Qué aprendí o qué cambiaría?</label>
+                                <textarea id="story-learned" rows="3" placeholder="La lección técnica, el refactor o cómo lo resolviste..." required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Habilidades / Stack Tech (Pulsa Enter o ,)</label>
+                                <div class="tags-input-container">
+                                    <div id="tags-list" class="tags-list"></div>
+                                    <input type="text" id="tag-input" placeholder="Añadir skill..." autocomplete="off">
+                                </div>
+                                <div class="tag-suggestions">
+                                    <span>Sugerencias:</span>
+                                    <button type="button" class="btn-suggest">React</button>
+                                    <button type="button" class="btn-suggest">PostgreSQL</button>
+                                    <button type="button" class="btn-suggest">Node.js</button>
+                                    <button type="button" class="btn-suggest">GitHub Actions</button>
+                                </div>
+                            </div>
+
+                            <div class="form-row-group">
+                                <div class="form-group flex-1">
+                                    <label for="story-visibility">Visibilidad</label>
+                                    <select id="story-visibility">
+                                        <option value="public">Público (Timeline)</option>
+                                        <option value="private">Privado (Solo tú)</option>
+                                        <option value="link">Enlace compartido</option>
+                                    </select>
+                                </div>
+                                <div class="form-group flex-1">
+                                    <label for="story-project">Proyecto Relacionado</label>
+                                    <input type="text" id="story-project" placeholder="Ej. Lab3 CI/CD" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <button type="submit" id="btn-save-story" class="btn btn-primary">
+                                <i class="fa-solid fa-floppy-disk"></i> Registrar Entrada
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Quick Metrics Card -->
+                    <div class="card stats-card">
+                        <h3>Resumen de Crecimiento</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-num" id="stat-total-entries">0</span>
+                                <span class="stat-lbl">Entradas</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-num" id="stat-total-skills">0</span>
+                                <span class="stat-lbl">Skills Usadas</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-num" id="stat-audit-count">0</span>
+                                <span class="stat-lbl">Logs Auditoría</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Central Content: Filter and Interactive Timeline -->
+                <main class="timeline-main-content">
+                    <div class="timeline-toolbar">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="timeline-search" placeholder="Buscar aprendizajes...">
+                        </div>
+                        
+                        <div class="skill-filter-bar">
+                            <span class="filter-lbl"><i class="fa-solid fa-filter"></i> Skills:</span>
+                            <div id="skills-filter-container" class="filter-chips">
+                                <span class="filter-chip active" data-skill="all">Todas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Editor-specific instructions banner -->
+                    <div class="helper-banner editor-only animate-fade-in">
+                        <div class="banner-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                        <div class="banner-text">
+                            <strong>Consejo de MVP:</strong> Las entradas aquí registradas alimentan tu línea de tiempo. Puedes modificar la visibilidad y ver el log de auditoría inmutable asociado a cada edición.
+                        </div>
+                    </div>
+
+                    <!-- Recruiter-specific instructions banner -->
+                    <div class="helper-banner recruiter-only hidden animate-fade-in">
+                        <div class="banner-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div class="banner-text">
+                            <strong>Vista de Reclutador:</strong> Estás viendo el perfil público de <span class="recruiter-target-name">@developer</span>. Utiliza los filtros de habilidades para ver cómo evolucionó su aprendizaje con el tiempo. Las entradas privadas no se muestran.
+                        </div>
+                        <button id="btn-export-pdf" class="btn btn-secondary btn-sm"><i class="fa-solid fa-file-pdf"></i> Exportar PDF</button>
+                    </div>
+
+                    <!-- Timeline Empty State -->
+                    <div id="timeline-empty-state" class="empty-state hidden">
+                        <i class="fa-solid fa-route-interrupted empty-icon"></i>
+                        <h3>Aún no has registrado ninguna entrada</h3>
+                        <p>Empieza a documentar tus aprendizajes diarios rellenando el formulario de la izquierda.</p>
+                        <button id="btn-load-mock" class="btn btn-outline-primary"><i class="fa-solid fa-database"></i> Cargar datos de ejemplo</button>
+                    </div>
+
+                    <!-- Timeline Container -->
+                    <div id="timeline-container" class="timeline-container">
+                        <!-- Timeline track line -->
+                        <div class="timeline-track"></div>
+                        <div id="timeline-elements-list" class="timeline-elements">
+                            <!-- JS will inject timeline items here -->
+                        </div>
+                    </div>
+                </main>
+
+                <!-- Right Sidebar: Audit Logs & System Integrity (THE WOW FACTOR) -->
+                <aside class="audit-ledger-panel">
+                    <div class="card audit-card">
+                        <div class="card-header-icon justify-between">
+                            <div class="flex-align-center">
+                                <i class="fa-solid fa-fingerprint text-green"></i>
+                                <h3>Registro de Auditoría (ACID)</h3>
+                            </div>
+                            <span class="badge-status-green">Verificado</span>
+                        </div>
+                        <p class="audit-desc">El producto se basa en la credibilidad del dato. Cada cambio genera un log inmutable de auditoría criptográfica simulado en LocalStorage.</p>
+                        <div class="audit-ledger-container">
+                            <div class="audit-track-line"></div>
+                            <ul id="audit-log-list" class="audit-log-items">
+                                <!-- JS will inject audit logs here -->
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </div>
+
+    <!-- SSO POPUP SIMULATION MODAL -->
+    <div id="sso-modal" class="modal-overlay">
+        <div class="modal-container sso-popup">
+            <div class="sso-popup-header">
+                <div class="sso-logo">
+                    <i id="sso-icon" class="fa-brands fa-github"></i>
+                    <span>Autorizar <strong>JobStories</strong></span>
+                </div>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="sso-popup-body">
+                <div class="auth-flow-graphic">
+                    <div class="auth-node jobstories-node">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <div class="auth-connector">
+                        <div class="connector-dot"></div>
+                    </div>
+                    <div id="auth-provider-node" class="auth-node provider-node">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                </div>
+                <h3>Solicitud de Autorización</h3>
+                <p>La aplicación <strong>JobStories (MVP Demo)</strong> solicita acceso a tu información de perfil público para crear tu portfolio profesional.</p>
+                <div class="permissions-list">
+                    <div class="perm-item">
+                        <i class="fa-solid fa-circle-check text-green"></i>
+                        <span>Nombre y foto de perfil</span>
+                    </div>
+                    <div class="perm-item">
+                        <i class="fa-solid fa-circle-check text-green"></i>
+                        <span>Dirección de correo electrónico</span>
+                    </div>
+                    <div class="perm-item">
+                        <i class="fa-solid fa-circle-check text-green"></i>
+                        <span>Username público</span>
+                    </div>
+                </div>
+                <div class="sso-actions">
+                    <button id="btn-sso-cancel" class="btn btn-outline">Cancelar</button>
+                    <button id="btn-sso-approve" class="btn btn-success">Autorizar e Iniciar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EDIT ENTRY MODAL -->
+    <div id="edit-modal" class="modal-overlay">
+        <div class="modal-container edit-popup">
+            <div class="modal-header">
+                <h3>Editar Entrada de Aprendizaje</h3>
+                <button class="modal-close" id="btn-close-edit">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="edit-story-form">
+                    <input type="hidden" id="edit-story-id">
+                    <div class="form-group">
+                        <label for="edit-story-title">Título</label>
+                        <input type="text" id="edit-story-title" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-story-tried">¿Qué intenté hacer?</label>
+                        <textarea id="edit-story-tried" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-story-failed">¿Qué salió mal?</label>
+                        <textarea id="edit-story-failed" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-story-learned">¿Qué aprendí?</label>
+                        <textarea id="edit-story-learned" rows="3" required></textarea>
+                    </div>
+                    <div class="form-row-group">
+                        <div class="form-group flex-1">
+                            <label for="edit-story-visibility">Visibilidad</label>
+                            <select id="edit-story-visibility">
+                                <option value="public">Público</option>
+                                <option value="private">Privado</option>
+                                <option value="link">Enlace compartido</option>
+                            </select>
+                        </div>
+                        <div class="form-group flex-1">
+                            <label for="edit-story-project">Proyecto</label>
+                            <input type="text" id="edit-story-project" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="audit-warning-banner">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <span><strong>Nota de Auditoría:</strong> Modificar esta entrada agregará una nueva firma en el log inmutable. Esto es visible para los reclutadores como una señal de transparencia.</span>
+                    </div>
+                    <div class="sso-actions">
+                        <button type="button" class="btn btn-outline" id="btn-cancel-edit">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast-container">
+        <i class="fa-solid fa-circle-check toast-icon"></i>
+        <span id="toast-message">Operación exitosa</span>
+    </div>
+
+    <!-- JavaScript Engine -->
+    <script src="app.js"></script>
+</body>
+</html>
