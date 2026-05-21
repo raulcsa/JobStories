@@ -1,8 +1,8 @@
 /* Root Variable System */
 :root {
-    --bg-primary: hsl(222, 47%, 11%);
-    --bg-secondary: hsl(223, 47%, 7%);
-    --bg-surface: rgba(30, 41, 59, 0.5);
+    --bg-primary: hsl(216, 44%, 12%);
+    --bg-secondary: hsl(216, 44%, 8%);
+    --bg-surface: rgba(35, 57, 91, 0.5);
     --border-color: rgba(255, 255, 255, 0.08);
     --border-hover: rgba(255, 255, 255, 0.15);
     
@@ -10,13 +10,13 @@
     --text-secondary: hsl(215, 20%, 65%);
     --text-muted: hsl(215, 16%, 47%);
     
-    --accent-purple: hsl(263, 90%, 67%);
-    --accent-purple-glow: rgba(139, 92, 246, 0.15);
-    --accent-indigo: hsl(239, 84%, 67%);
+    --accent-purple: hsl(191, 65%, 46%);
+    --accent-purple-glow: rgba(41, 166, 194, 0.15);
+    --accent-indigo: hsl(191, 68%, 35%);
     --accent-green: hsl(142, 71%, 45%);
     --accent-green-glow: rgba(16, 185, 129, 0.15);
     --accent-red: hsl(0, 84%, 60%);
-    --accent-yellow: hsl(45, 93%, 47%);
+    --accent-yellow: hsl(29, 41%, 49%);
     
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -86,11 +86,11 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary {
     background: linear-gradient(135deg, var(--accent-purple), var(--accent-indigo));
     color: white;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 4px 12px rgba(29, 127, 150, 0.3);
 }
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 6px 16px rgba(29, 127, 150, 0.4);
 }
 
 .btn-secondary {
@@ -156,7 +156,7 @@ h1, h2, h3, h4, h5, h6 {
 .badge-mvp {
     background: var(--accent-purple-glow);
     color: var(--accent-purple);
-    border: 1px solid rgba(139, 92, 246, 0.3);
+    border: 1px solid rgba(41, 166, 194, 0.3);
     padding: 0.25rem 0.6rem;
     border-radius: 9999px;
     font-size: 0.75rem;
@@ -219,7 +219,7 @@ h1, h2, h3, h4, h5, h6 {
     left: -10%;
     width: 60%;
     height: 60%;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(99, 102, 241, 0.05) 50%, rgba(0,0,0,0) 70%);
+    background: radial-gradient(circle, rgba(41, 166, 194, 0.15) 0%, rgba(29, 127, 150, 0.05) 50%, rgba(0,0,0,0) 70%);
     pointer-events: none;
     z-index: 0;
     animation: pulseGlow 8s ease-in-out infinite;
@@ -251,10 +251,15 @@ h1, h2, h3, h4, h5, h6 {
 .logo-icon {
     color: var(--accent-purple);
     font-size: 1.75rem;
-    filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.4));
+    filter: drop-shadow(0 0 8px rgba(41, 166, 194, 0.4));
 }
 .logo span span {
     color: var(--accent-purple);
+}
+.logo-divider {
+    color: var(--text-muted) !important;
+    font-weight: 300;
+    margin: 0 0.25rem;
 }
 
 .landing-main {
@@ -650,7 +655,7 @@ h1, h2, h3, h4, h5, h6 {
     gap: 0.35rem;
     background: var(--accent-purple-glow);
     color: var(--accent-purple);
-    border: 1px solid rgba(139, 92, 246, 0.3);
+    border: 1px solid rgba(41, 166, 194, 0.3);
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
     font-size: 0.75rem;
@@ -1006,9 +1011,9 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--accent-green-glow);
 }
 .credibility-audit-badge.modified {
-    border-color: rgba(245, 158, 11, 0.2);
+    border-color: rgba(176, 124, 74, 0.2);
     color: var(--accent-yellow);
-    background: rgba(245, 158, 11, 0.05);
+    background: rgba(176, 124, 74, 0.05);
 }
 
 /* Timeline Structured Narrative fields */
@@ -1137,7 +1142,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .audit-log-dot.modify {
     background: var(--accent-yellow);
-    box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
+    box-shadow: 0 0 6px rgba(176, 124, 74, 0.5);
 }
 .audit-log-dot.delete {
     background: var(--accent-red);
@@ -1257,7 +1262,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .jobstories-node {
     color: var(--accent-purple);
-    border-color: rgba(139, 92, 246, 0.4);
+    border-color: rgba(41, 166, 194, 0.4);
     box-shadow: 0 0 15px var(--accent-purple-glow);
 }
 .auth-connector {
@@ -1335,8 +1340,8 @@ h1, h2, h3, h4, h5, h6 {
     gap: 1.25rem;
 }
 .audit-warning-banner {
-    background: rgba(245, 158, 11, 0.08);
-    border: 1px solid rgba(245, 158, 11, 0.25);
+    background: rgba(176, 124, 74, 0.08);
+    border: 1px solid rgba(176, 124, 74, 0.25);
     padding: 0.75rem 1rem;
     border-radius: 8px;
     display: flex;
