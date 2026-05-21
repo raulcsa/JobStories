@@ -58,3 +58,4 @@ Se abrirá automáticamente el navegador en la dirección del servidor estático
 
 - **SSO Externo vs Auth Propia**: La demo simula el registro directo delegando la identidad en GitHub/Google, acelerando el onboarding del usuario tech sin almacenar contraseñas.
 - **Integridad y Credibilidad vs Libertad de Edición**: Para mitigar el riesgo de que los reclutadores desconfíen de portfolios fabricados (R-02), la app implementa el log inmutable. El usuario puede editar, pero se registra en el ledger público de la entrada indicando cuántas modificaciones ha sufrido.
+a
